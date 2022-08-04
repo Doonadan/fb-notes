@@ -1,19 +1,23 @@
 <template>
     <div class="add-note">
-        <h1>{{ ($route.name == 'editNote' ? 'Редактировать' : 'Добавить') }} {{ (noteType == 'location' ? 'место' : (noteType == 'shoppingList' ? 'список покупок' : 'заметку')) }}</h1>
+        <h1>{{ ($route.name == 'editNote' ? 'Редактировать' : 'Добавить') }}
+         {{ (noteType == 'location' ? 'место' : (noteType == 'shoppingList' ? 'список покупок' : 'заметку')) }}</h1>
         <div v-if="validationRunned && errors.common" class="alert alert-danger">
           {{ errors.common }}
         </div>
         <div class="mb-3">
           <label for="noteTitle" class="form-label">Название</label>
-          <input type="text" placeholder="Введите название" name="noteTitle" v-model="note.title" :class="'form-control'+ (validationRunned ? (errors.title ? ' is-invalid' : ' is-valid') : '')" required>
+          <input type="text" placeholder="Введите название" name="noteTitle" v-model="note.title"
+            :class="'form-control'+ (validationRunned ? (errors.title ? ' is-invalid' : ' is-valid') : '')" required>
           <div v-if="errors.title" class="invalid-feedback">
             {{ errors.title }}
           </div>
         </div>
         <div class="mb-3" v-if="noteType == 'textNote'">
           <label for="noteBody" class="form-label">Содержимое</label>
-          <textarea placeholder="Введите текст" name="noteBody" v-model="note.body" :class="'form-control'+ (validationRunned ? (errors.body ? ' is-invalid' : ' is-valid') : '')" rows="12"></textarea>
+          <textarea placeholder="Введите текст" name="noteBody" v-model="note.body"
+            :class="'form-control'+ (validationRunned ? (errors.body ? ' is-invalid' : ' is-valid') : '')"
+            rows="12"></textarea>
           <div v-if="errors.body" class="invalid-feedback">
             {{ errors.body }}
           </div>
@@ -21,7 +25,8 @@
         <div v-if="noteType == 'location'">
           <div class="mb-3">
             <label for="noteLatLng">Координаты</label>
-            <input placeholder="XX.XXXXXX,YY.YYYYYY" type="text" name="noteLatLng" v-model="note.latLng" :class="'form-control'+ (validationRunned ? (errors.latLng ? ' is-invalid' : ' is-valid') : '')">
+            <input placeholder="XX.XXXXXX,YY.YYYYYY" type="text" name="noteLatLng" v-model="note.latLng"
+              :class="'form-control'+ (validationRunned ? (errors.latLng ? ' is-invalid' : ' is-valid') : '')">
             <div v-if="errors.latLng" class="invalid-feedback">
               {{ errors.latLng }}
             </div>
@@ -30,7 +35,8 @@
             <yandex-map ref="map" :coords="currentPlace" zoom="12" :controls="['zoomControl', 'fullscreenControl']"
               style="width: 100%; height: 480px;" @click="onClick">
               <!-- markers -->
-              <ymap-marker v-if="marker" :coords="marker" :balloon="{ header: note.title, body: note.latLng }" marker-id="current"></ymap-marker>
+              <ymap-marker v-if="marker" :coords="marker" :balloon="{ header: note.title, body: note.latLng }"
+                marker-id="current"></ymap-marker>
             </yandex-map>
           </div>
         </div>
@@ -96,10 +102,14 @@ export default {
   },
   computed: {
     currentPlace () {
-      return (this.note.latLng && this.isValidLatLng(this.note.latLng)) ? this.note.latLng.replace(', ', ',').split(',', 2) : this.defaultPlace
+      return (this.note.latLng && this.isValidLatLng(this.note.latLng))
+        ? this.note.latLng.replace(', ', ',').split(',', 2)
+        : this.defaultPlace
     },
     marker () {
-      return (this.note.latLng && this.isValidLatLng(this.note.latLng)) ? this.note.latLng.replace(', ', ',').split(',', 2) : false
+      return (this.note.latLng && this.isValidLatLng(this.note.latLng))
+        ? this.note.latLng.replace(', ', ',').split(',', 2)
+        : false
     },
     note () {
       return this.$store.state.noteForEdit

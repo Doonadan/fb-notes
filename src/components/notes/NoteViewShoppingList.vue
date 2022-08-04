@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3 list-group list-group-flush">
-    <div :class="'list-group-item' + (item.completed ? ' list-group-item-success' : '')" v-for="(item, k) in note.items" :key="k">
+    <div :class="'list-group-item' + (item.completed ? ' list-group-item-success' : '')"
+      v-for="(item, k) in note.items" :key="k">
       <div class="float-start">
         {{ k+1 }}.&nbsp;
         <font-awesome-icon icon="fa-solid fa-circle-check" class="text-success" v-if="item.completed" />
@@ -13,7 +14,9 @@
           <font-awesome-icon icon="fa-solid fa-delete-left" />
         </button>
       </div>
-      <span :class="(item.completed ? 'text-decoration-line-through' : '')">{{ item.title }} &ndash; {{ item.quantity }} {{ item.unit }}</span>
+      <span :class="(item.completed ? 'text-decoration-line-through' : '')">
+        {{ item.title }} &ndash; {{ item.quantity }} {{ item.unit }}
+      </span>
     </div>
   </div>
 </template>

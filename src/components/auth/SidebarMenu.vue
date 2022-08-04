@@ -1,6 +1,7 @@
 <template>
   <div id="sidebar-menu">
-    <button id="menu-toggle-btn" class="btn btn-secondary position-fixed top-0 start-0 m-1" data-bs-toggle="offcanvas" data-bs-target="#sidemenuOffcanvas" aria-controls="sidemenuOffcanvas">
+    <button id="menu-toggle-btn" class="btn btn-secondary position-fixed top-0 start-0 m-1" data-bs-toggle="offcanvas"
+      data-bs-target="#sidemenuOffcanvas" aria-controls="sidemenuOffcanvas">
       <font-awesome-icon icon="fa-solid fa-bars" />
     </button>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidemenuOffcanvas" aria-labelledby="sideMenu">

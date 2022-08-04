@@ -24,3 +24,4 @@ pnpm-debug.log*
 
 src/modules/config/firebase.js
 src/modules/config/yamaps.js
+/package-lock.json
